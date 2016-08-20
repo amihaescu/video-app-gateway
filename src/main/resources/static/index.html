@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.css" />
+</head>
+<body ng-app="videoApp">
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <span class="glyphicon glyphicon-film"></span>Movies
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#/login">Login</a></li>
+                <li><a href="#/signup">Sign up</a></li>
+            </ul>
+        </div>
+    </div>
+</nav><div class="container" id="content" ui-view>
+</div>
+<script src="/webjars/angularjs/1.5.6/angular.js"></script>
+<script src="/webjars/angularjs/1.5.6/angular-resource.js"></script>
+<script src="/webjars/angularjs/1.5.6/angular-route.js"></script>
+<script src="webjars/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers/loginController.js"></script>
+<script src="js/controllers/signupController.js"></script>
+</body>
+</html>
