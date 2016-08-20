@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 import ro.andreimihaescu.dto.UserRequest;
 import ro.andreimihaescu.repository.UserRepository;
 
-import static org.bouncycastle.cms.RecipientId.password;
-
 @Service
 public class UserService {
 
@@ -32,7 +30,9 @@ public class UserService {
     }
 
     public String createUser(UserRequest userRequest){
-        LOGGER.info(String.format("Attempted to create user with %s and %s", userRequest.getUsername(), userRequest.getPassword()));
-        return userRepository.createUser(userRequest) ? textEncryptor.encrypt(userRequest.getUsername()): "";
+        LOGGER.info(String.format("Attempted to create user %s", userRequest.getUsername()));
+        Boolean aBoolean = userRepository.createUser(userRequest);
+        LOGGER.info(String.format("User creation was successful %s", aBoolean));
+        return aBoolean ? textEncryptor.encrypt(userRequest.getUsername()): "";
     }
 }

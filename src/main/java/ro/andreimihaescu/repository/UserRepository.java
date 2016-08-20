@@ -12,8 +12,7 @@ public class UserRepository {
     private RestTemplate restTemplate;
 
     public Boolean createUser(UserRequest userRequest) {
-        //srestTemplate.postForEntity("",userRequest, Boolean.class);
-        return true;
+        return restTemplate.postForEntity("http://user-service/users/create", userRequest, Boolean.class).getBody();
     }
 
 }
