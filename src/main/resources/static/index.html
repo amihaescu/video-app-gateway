@@ -9,8 +9,10 @@
 <div ng-controller="indexCtrl">
 <md-content class="md-padding">
     <md-nav-bar md-selected-nav-item="currentNavItem" aria-label="navigation-links">
-        <md-nav-item name="login" md-nav-href="#/login">Login</md-nav-item>
-        <md-nav-item name="signup" md-nav-href="#/signup">Signup</md-nav-item>
+        <md-nav-item ng-show="hideMain()" name="login" md-nav-href="#/login">Login</md-nav-item>
+        <md-nav-item ng-hide="hideMain()" name="logout" md-nav-click="logout()">Log out</md-nav-item>
+        <md-nav-item ng-show="hideMain()" name="signup" md-nav-href="#/signup">Signup</md-nav-item>
+        <md-nav-item ng-hide="hideMain()" name="main" md-nav-href="#/main">Main</md-nav-item>
     </md-nav-bar>
 </md-content>
 </div>
@@ -24,9 +26,11 @@
 <script src="/webjars/angularjs/1.5.6/angular-route.js"></script>
 <script src="webjars/angular-ui-router/0.2.18/angular-ui-router.js"></script>
 <script src="js/app.js"></script>
+<script src="js/services/authService.js"></script>
 <script src="js/controllers/loginController.js"></script>
 <script src="js/controllers/signupController.js"></script>
 <script src="js/controllers/indexController.js"></script>
 <script src="js/controllers/mainController.js"></script>
+
 </body>
 </html>
