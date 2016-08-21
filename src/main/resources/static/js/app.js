@@ -1,5 +1,5 @@
 'use strict';
-var app = angular.module('videoApp', ['ngRoute', 'ui.router']);
+var app = angular.module('videoApp', ['ngRoute', 'ngMaterial', 'ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider){
     $stateProvider
@@ -14,6 +14,11 @@ app.config(function($stateProvider, $urlRouterProvider){
             templateUrl : 'templates/signup.html',
             controller: 'signupController',
             data : {'title': 'Sign up'}
+        })
+        .state('main',{
+            url:'/main',
+            templateUrl : 'templates/main.html',
+            controller: 'mainController'
         });
     $urlRouterProvider.otherwise('/login');
 }).run(function($rootScope, $state){

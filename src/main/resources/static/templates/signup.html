@@ -1,1 +1,20 @@
-<h1>{{title}}</h1>
+<div>
+    <h2>{{title}}</h2>
+    <md-content>
+        <div style="width: 400px;">
+            <form id="signup-form">
+                <md-input-container class="md-block" flex-gt-sm="">
+                    <label>Username</label>
+                    <input ng-model="credentials.username">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm="">
+                    <label>Password</label>
+                    <input type="password" ng-model="credentials.password">
+                </md-input-container>
+                <md-input-container>
+                    <md-button class="md-raised md-primary" ng-click="signup()">Sign up</md-button>
+                </md-input-container>
+            </form>
+        </div>
+    </md-content>
+</div>

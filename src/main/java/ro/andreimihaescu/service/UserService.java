@@ -19,9 +19,10 @@ public class UserService {
 
     private final static Logger LOGGER = Logger.getLogger(UserService.class);
 
-    public String authenticateUser(String username, String password){
-        LOGGER.info(String.format("Attempted to authenticate user with %s and %s", username, password));
-        return textEncryptor.encrypt(username);
+    public String authenticateUser(UserRequest userRequest){
+        LOGGER.info(String.format("Attempted to authenticate user with %s", userRequest.getUsername()));
+        Boolean isUserAuthenticated = userRepository.authenticateUser(userRequest);
+        return isUserAuthenticated ? textEncryptor.encrypt(userRequest.getUsername()):  "";
     }
 
     public String checkUser(String hash){

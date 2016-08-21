@@ -151,5 +151,6 @@
     <orderEntry type="library" name="Maven: org.webjars:bootstrap:3.3.7-1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:jquery:2.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:angular-ui-router:0.2.18" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:angular-material:1.1.0" level="project" />
   </component>
 </module>
