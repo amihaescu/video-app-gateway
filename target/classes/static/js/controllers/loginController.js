@@ -7,7 +7,7 @@ app.controller('loginController', function($scope, $http, $state){
             .then(
                 function(response){
                     if (response.data.response){
-                        window.sessionStorage.hash = response.data.response;
+                        sessionStorage.hash = response.data.response;
                         $state.go('main');
                     }
                 },

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import ro.andreimihaescu.dto.StringResponse;
 import ro.andreimihaescu.dto.UserRequest;
+import ro.andreimihaescu.service.RoleService;
 import ro.andreimihaescu.service.UserService;
 
 @RestController
@@ -16,6 +17,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleService roleService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public StringResponse login(@RequestBody UserRequest userRequest) {
