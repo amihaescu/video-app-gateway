@@ -24,12 +24,12 @@ app.config(function($stateProvider, $urlRouterProvider){
 }).run(function($rootScope, $state, AuthService){
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
         console.log('from state '+ fromState.name + ' to state ' + toState.name);
-        if (!AuthService.isAuthenticated() && toState.name != "login"){
+        /*if (!AuthService.isAuthenticated() && toState.name != "login"){
             console.log("Transitioning to login!!!");
             $state.transitionTo("login");
             event.preventDefault();
 
-        }
+        }*/
     });
 });
 
