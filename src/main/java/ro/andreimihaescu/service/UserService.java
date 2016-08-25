@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.encrypt.TextEncryptor;
 import org.springframework.stereotype.Service;
+import ro.andreimihaescu.dto.RoleRequest;
 import ro.andreimihaescu.dto.UserRequest;
 import ro.andreimihaescu.repository.RoleRepository;
 import ro.andreimihaescu.repository.UserRepository;
@@ -36,8 +37,13 @@ public class UserService {
 
     public String createUser(UserRequest userRequest){
         LOGGER.info(String.format("Attempted to create user %s", userRequest.getUsername()));
-        Boolean aBoolean = userRepository.createUser(userRequest);
-        LOGGER.info(String.format("User creation was successful %s", aBoolean));
-        return aBoolean ? textEncryptor.encrypt(userRequest.getUsername()): "";
+        Long userId = userRepository.createUser(userRequest);
+        LOGGER.info(String.format("User creation was successfully created with id %s", userId));
+        Boolean returnValue = false;
+        if (userId != 0){
+            returnValue = roleRepository.addRoleForUserId(new RoleRequest(userId, userRequest));
+        }
+        LOGGER.info(String.format("User role was successful %s", returnValue));
+        return returnValue ? textEncryptor.encrypt(userRequest.getUsername()): "";
     }
 }

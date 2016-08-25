@@ -11,8 +11,8 @@ public class UserRepository {
     @Autowired
     private RestTemplate restTemplate;
 
-    public Boolean createUser(UserRequest userRequest) {
-        return restTemplate.postForEntity("http://user-service/users/create", userRequest, Boolean.class).getBody();
+    public Long createUser(UserRequest userRequest) {
+        return restTemplate.postForEntity("http://user-service/users/create", userRequest, Long.class).getBody();
     }
 
     public Boolean authenticateUser(UserRequest userRequest){

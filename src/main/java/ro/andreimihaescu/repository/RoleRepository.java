@@ -12,6 +12,6 @@ public class RoleRepository {
     private RestTemplate restTemplate;
 
     public boolean addRoleForUserId(RoleRequest roleRequest){
-        return restTemplate.postForEntity("http://user-service/users/create", roleRequest, Boolean.class).getBody();
+        return restTemplate.postForEntity("http://role-service/roles/add", roleRequest, Boolean.class).getBody();
     }
 }

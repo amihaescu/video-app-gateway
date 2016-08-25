@@ -19,17 +19,21 @@ app.config(function($stateProvider, $urlRouterProvider){
             url:'/main',
             templateUrl : 'templates/main.html',
             controller: 'mainController'
+        })
+        .state('unauthorized', {
+            url : '/unauthorized',
+            templateUrl : 'templates/unauthorized.html'
         });
     $urlRouterProvider.otherwise('/login');
 }).run(function($rootScope, $state, AuthService){
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
         console.log('from state '+ fromState.name + ' to state ' + toState.name);
-        /*if (!AuthService.isAuthenticated() && toState.name != "login"){
-            console.log("Transitioning to login!!!");
-            $state.transitionTo("login");
-            event.preventDefault();
+        if (toState.name == "login" || toState.name == "signup"){
 
-        }*/
+        } else if (!AuthService.isAuthenticated() && toState.name != "unauthorized") {
+                $state.transitionTo("unauthorized");
+                event.preventDefault();
+        }
     });
 });
 

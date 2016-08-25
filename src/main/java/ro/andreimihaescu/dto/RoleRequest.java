@@ -12,6 +12,12 @@ public class RoleRequest {
         this.roleType = roleType;
     }
 
+    public  RoleRequest(Long userId, UserRequest userRequest){
+        this.userId = userId;
+        this.subscriptionType = userRequest.getSubscriptionType();
+        this.roleType = userRequest.getSubscriptionType();
+    }
+
     public Long getUserId() {
         return userId;
     }

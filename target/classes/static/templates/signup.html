@@ -5,12 +5,31 @@
             <form id="signup-form">
                 <md-input-container class="md-block" flex-gt-sm="">
                     <label>Username</label>
-                    <input ng-model="credentials.username">
+                    <input ng-model="credentials.username" />
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm="">
                     <label>Password</label>
-                    <input type="password" ng-model="credentials.password">
+                    <input type="password" ng-model="credentials.password" />
                 </md-input-container>
+                <md-input-container>
+                    <label>Account type</label>
+                    <md-select aria-label="account-type" ng-model="credentials.accountType">
+                        <md-option ng-disabled="true"><em>None</em></md-option>
+                        <md-option ng-repeat="accountType in accountTypes" ng-value="accountType.value" >
+                            {{accountType.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container ng-show="showSubscription()">
+                    <label>Subscription type</label>
+                    <md-select aria-label="subscription-type" ng-model="credentials.subscriptionType">
+                        <md-option ng-disabled="true"><em>None</em></md-option>
+                        <md-option ng-repeat="subscription in subscriptionTypes" ng-value="subscription.value" >
+                            {{subscription.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <br/>
                 <md-input-container>
                     <md-button class="md-raised md-primary" ng-click="signup()">Sign up</md-button>
                 </md-input-container>
