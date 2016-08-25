@@ -23,6 +23,11 @@ app.config(function($stateProvider, $urlRouterProvider){
         .state('unauthorized', {
             url : '/unauthorized',
             templateUrl : 'templates/unauthorized.html'
+        })
+        .state('view', {
+            url : '/view',
+            templateUrl : 'templates/view.html',
+            controller : 'viewController'
         });
     $urlRouterProvider.otherwise('/login');
 }).run(function($rootScope, $state, AuthService){
