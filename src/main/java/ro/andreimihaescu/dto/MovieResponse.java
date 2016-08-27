@@ -3,13 +3,13 @@ package ro.andreimihaescu.dto;
 
 public class MovieResponse {
 
-    private Long id;
+    private Integer id;
     private String show;
     private String episode;
     private String image;
     private String url;
 
-    public MovieResponse(Long id, String show, String episode, String image, String url) {
+    public MovieResponse(Integer id, String show, String episode, String image, String url) {
         this.id = id;
         this.show = show;
         this.episode = episode;
@@ -17,11 +17,11 @@ public class MovieResponse {
         this.url = url;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -56,4 +56,5 @@ public class MovieResponse {
     public void setUrl(String url) {
         this.url = url;
     }
+
 }

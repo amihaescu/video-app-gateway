@@ -2,10 +2,12 @@ package ro.andreimihaescu.controller;
 
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ro.andreimihaescu.dto.MovieResponse;
+import ro.andreimihaescu.service.MovieService;
 import ro.andreimihaescu.utils.MultipartFileSender;
 
 import javax.servlet.http.HttpServletResponse;
@@ -19,14 +21,13 @@ public class MovieController {
 
     private final static Logger LOGGER = Logger.getLogger(MovieController.class);
 
+    @Autowired
+    private MovieService movieService;
+
     @RequestMapping("/list")
     public List<MovieResponse> getMovieListByUserRole() {
-
-        return Arrays.asList(
-                new MovieResponse(1L, "Silicon Valley", "S03E01", "","http://localhost:8081/api/movies/1"),
-                new MovieResponse(2L, "Silicon Valley", "03E02", "", "http://localhost:8081/api/movies/2"),
-                new MovieResponse(3L, "Silicon Valley", "S03E03", "", "http://localhost:8081/api/movies/3")
-        );
+        List<MovieResponse> list = movieService.getMovieListByUserRole();
+        return  list;
     }
 
     @RequestMapping("/{video}")

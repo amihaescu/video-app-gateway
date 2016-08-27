@@ -1,5 +1,5 @@
 'use strict';
-var app = angular.module('videoApp', ['ngRoute', 'ngMaterial', 'ui.router']);
+var app = angular.module('videoApp', ['ngRoute', 'ngMaterial', 'ngSanitize', 'ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider){
     $stateProvider
