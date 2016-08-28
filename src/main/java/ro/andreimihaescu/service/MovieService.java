@@ -3,6 +3,7 @@ package ro.andreimihaescu.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import ro.andreimihaescu.dto.MovieResponse;
@@ -20,7 +21,9 @@ public class MovieService {
     private DiscoveryClient discoveryClient;
 
     public List<MovieResponse> getMovieListByUserRole() {
-        List<HashMap> listOfMaps = restTemplate.getForObject("http://video-service/api/movies/list", List.class);
+        List<HashMap> listOfMaps = restTemplate.getForObject("http://video-service/api/movies/list",
+                List.class,
+                Collections.singletonMap("role", 1));
         ServiceInstance serviceInstance = discoveryClient.getInstances("video-service").stream().findAny().orElse(null);
         String host = serviceInstance.getHost();
         Integer port = serviceInstance.getPort();
@@ -35,7 +38,6 @@ public class MovieService {
                     .build()
             );
         }
-        System.out.println("Return list size "+returnList.size());
         return returnList;
     }
 }

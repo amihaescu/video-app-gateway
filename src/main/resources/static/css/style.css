@@ -4,3 +4,14 @@
 
 .gridListdemoBasicUsage .gray {
     background: #f5f5f5; }
+
+.center-video {
+    margin: 0 auto;
+    height: 500px;
+    width: 100%;
+}
+
+.center-comments {
+    width: 55%;
+    margin: 0 auto;
+}
