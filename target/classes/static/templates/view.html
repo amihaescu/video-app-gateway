@@ -1,0 +1,31 @@
+<div>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>Now viewing: {{movie.show}} - {{movie.episode}}</h3>
+        </div>
+    </md-toolbar>
+
+    <md-content>
+        <video class="center-video" controls src="{{trustSrc(movie.url)}}"></video>
+        <div class="center-comments">
+            <h3>Comments:</h3>
+            <div>
+                <form name="commentForm">
+                    <md-input-container class="md-block-inline" flex-gt-xs="">
+                        <label>Comment</label>
+                        <input size="60" ng-model="comment.text" />
+                    </md-input-container>
+                    <md-button ng-click="addComment()" class="md-raised md-primary">Add</md-button>
+                </form>
+            </div>
+            <md-list>
+                <md-list-item class="md-2-line" ng-repeat="comment in comments">
+                    <div class="md-list-item-text">
+                        <h3>{{comment.userName}}</h3>
+                        <p>{{comment.text}}</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-content>
+</div>

@@ -1,7 +1,6 @@
 package ro.andreimihaescu;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -35,19 +34,20 @@ public class EurekaclientRemotecallApplication {
 
     @LoadBalanced
     @Bean
-    RestTemplate getRestTemplate(){
+    RestTemplate getRestTemplate() {
         return new RestTemplate();
     }
 
-    private String getRandomHexString(int numchars){
+    private String getRandomHexString(int numchars) {
         Random r = new Random();
         StringBuffer sb = new StringBuffer();
-        while(sb.length() < numchars){
+        while (sb.length() < numchars) {
             sb.append(Integer.toHexString(r.nextInt()));
         }
 
         return sb.toString().substring(0, numchars);
     }
+
 
 
 }
